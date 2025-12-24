@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y Apps - မိုဘိုင်းအက်ပ်များ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; }
+        
+        /* Header & Smart Symbols */
+        header { background: #1a237e; color: white; padding: 1rem; position: sticky; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .logo { font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        
+        .nav-links { display: flex; gap: 15px; list-style: none; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-size: 14px; }
+        
+        /* Language Dropdown */
+        .lang-select { background: #3f51b5; color: white; border: 1px solid white; padding: 3px 6px; border-radius: 4px; font-size: 12px; }
+
+        /* Banner */
+        .header-banner { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); 
+            height: 180px; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
+
+        /* APK Card - သင်ပြထားတဲ့ပုံစံအတိုင်း ပြင်ထားပါတယ် */
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        .app-card { background: white; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.1); margin-bottom: 25px; }
+        
+        /* APK Icon Styling - ပေးထားတဲ့ပုံနဲ့ တူအောင်လုပ်ထားတာပါ */
+        .apk-icon-circle { width: 120px; height: 120px; background: white; border-radius: 50%; padding: 5px; margin: 0 auto 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; justify-content: center; align-items: center; }
+        .app-icon { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        
+        /* Buttons */
+        .download-btn { background: linear-gradient(135deg, #28a745, #218838); color: white; border: none; padding: 14px; border-radius: 30px; cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: bold; width: 100%; margin-top: 15px; font-size: 1.1rem; }
+        .share-btn { background: #fff; color: #007bff; border: 1px solid #007bff; padding: 10px; border-radius: 30px; cursor: pointer; margin-top: 12px; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+        /* About Section */
+        .about-section { background: white; border-radius: 20px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .about-section h2 { color: #1a237e; margin-bottom: 12px; font-size: 1.2rem; }
+
+        /* Footer */
+        footer { background: #1a237e; color: white; text-align: center; padding: 30px; margin-top: 40px; }
+        .fb-icon { font-size: 30px; color: white; margin-top: 15px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">🚀 Y Apps</div>
+            <ul class="nav-links">
+                <li><a href="#">🏠 Home</a></li>
+                <li><a href="#about">ℹ️ About</a></li>
+                <li>
+                    <select class="lang-select" onchange="changeLanguage(this.value)">
+                        <option value="my">🇲🇲 မြန်မာ</option>
+                        <option value="en">🇺🇸 EN</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="header-banner">
+        <h1>Welcome to Y Apps Store</h1>
+        <p>Your Trusted APK Provider</p>
+    </div>
+
+    <div class="container">
+        <div class="app-card">
+            <div class="apk-icon-circle">
+                <img src="https://lh3.googleusercontent.com/d/1vU4VzNX6yP2T90WeTB7Gr7H1-2e_-JsX" class="app-icon" alt="Y App Icon">
+            </div>
+            <h2 id="app-title">ဝင်ငွေထွက်ငွေမှတ်စု</h2>
+            <p id="app-desc" style="color:#666; font-size: 14px; margin: 8px 0;">လုပ်ငန်းရှင်များနှင့် အလုပ်သမားများအတွက် နေ့စဉ်သုံးငွေစာရင်းကို အလွယ်တကူ မှတ်တမ်းတင်ရန်။</p>
+            
+            <a href="javascript:void(0)" onclick="downloadWithAd()" class="download-btn">
+                <i class="fas fa-cloud-arrow-down"></i> <span id="dl-text">Download APK</span>
+            </a>
+            
+            <button class="share-btn" onclick="shareWebsite()">
+                <i class="fas fa-share-nodes"></i> Share Website
+            </button>
+        </div>
+
+        <div class="about-section" id="about">
+            <h2 id="about-title">ℹ️ About Our Apps</h2>
+            <p id="about-text" style="font-size: 14px; color: #555; text-align: justify;">
+                <b>Y Apps</b> သည် မြန်မာနိုင်ငံသားများအတွက် အသုံးဝင်မည့် Android Applications များကို အခမဲ့နှင့် စိတ်ချယုံကြည်စွာ ရယူနိုင်ရန် တည်ဆောက်ထားသော ဝက်ဆိုက်တစ်ခုဖြစ်ပါသည်။ ကျွန်ုပ်တို့သည် အသုံးပြုရလွယ်ကူပြီး အကျိုးရှိမည့် အက်ပ်များကိုသာ ဦးစားပေးတင်ဆက်ပေးနေပါသည်။
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Y Apps - Trusted APK Store</p>
+        <p style="margin-top:8px; font-size:14px;"><i class="fas fa-phone"></i> 📞 Connect: 0618201594</p>
+        <a href="https://www.facebook.com/share/17dWXWbZBu/" target="_blank" class="fb-icon"><i class="fab fa-facebook"></i></a>
+    </footer>
+
+    <script>
+        function downloadWithAd() {
+            var smartLink = "https://www.effectivegatecpm.com/ue0d3gerb?key=aab2b27aee8d50f9a61c7fb136dd54c7";
+            var apkUrl = "https://github.com/daily-Y-App/Apk-downlode/releases/download/V5/myapp.apk";
+            window.open(smartLink, '_blank');
+            setTimeout(function() { window.location.href = apkUrl; }, 1200);
+        }
+
+        function shareWebsite() {
+            if (navigator.share) {
+                navigator.share({ title: 'Y Apps', url: window.location.href });
+            } else {
+                alert("Link copied: " + window.location.href);
+            }
+        }
+
+        function changeLanguage(lang) {
+            if(lang === 'en') {
+                document.getElementById('app-title').innerText = "Daily Wage Tracker";
+                document.getElementById('app-desc').innerText = "Easy record for income and expenses for all workers.";
+                document.getElementById('dl-text').innerText = "Get APK Now";
+                document.getElementById('about-title').innerText = "ℹ️ About Our Apps";
+                document.getElementById('about-text').innerHTML = "<b>Y Apps</b> provides useful and safe Android applications for Myanmar users for free. We focus on simplicity and productivity.";
+            } else {
+                location.reload();
+            }
+        }
+    </script>
+
+    <script src="https://pl28319348.effectivegatecpm.com/c8/74/97/c87497e644d07152e4a34b913d1987ac.js"></script>
+
+</body>
+</html>
